@@ -171,7 +171,7 @@
             <span class="font-heading italic text-rose-500 text-lg md:text-2xl font-light tracking-wide mb-1">
               Olá, eu sou
             </span>
-            <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-[0.95]">
+            <h1 class="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl tracking-tight text-white uppercase leading-[0.95] max-w-full">
               Arthur <br class="hidden sm:block"/>
               <span class="text-gradient">Souza.</span>
             </h1>
@@ -217,7 +217,7 @@
         </div>
 
         <!-- Right Visual Column (Foto Casual no Card 3D) -->
-        <div class="lg:col-span-5 relative flex justify-center items-center">
+        <div class="lg:col-span-5 relative flex justify-center lg:justify-end items-center">
           
           <!-- Outer Glow Backdrop -->
           <div class="absolute -inset-4 bg-gradient-to-tr from-rose-600/20 via-indigo-600/10 to-transparent rounded-3xl blur-2xl"></div>
@@ -798,14 +798,14 @@
         
         <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-rose-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
           
           <!-- Left Column: Informações Diretas -->
           <div class="lg:col-span-5 flex flex-col gap-6">
             <span class="font-mono text-xs uppercase tracking-widest text-rose-500 font-semibold">
               // CONTATO DIRETO
             </span>
-            <h2 class="font-display font-black text-3xl md:text-5xl text-white tracking-tight uppercase leading-tight">
+            <h2 class="font-display font-black text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl text-white tracking-tight uppercase leading-[1.1] max-w-full">
               Vamos Conversar <br/>
               <span class="text-gradient">sobre Oportunidades.</span>
             </h2>
@@ -851,14 +851,17 @@
 
           <!-- Right Column: Formulário de Mensagem Direta -->
           <div class="lg:col-span-7">
-            <div class="glass-panel p-6 sm:p-8 rounded-2xl bg-black/40 border-slate-800">
-              <h3 class="font-heading font-bold text-xl text-white mb-2">Enviar Mensagem ao Arthur</h3>
-              <p class="text-xs text-slate-400 mb-6">Preencha os campos abaixo para envio direto por e-mail.</p>
+            <div class="glass-panel p-6 sm:p-8 rounded-2xl bg-black/50 border-slate-800">
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-heading font-bold text-xl text-white">Enviar Mensagem ao Arthur</h3>
+                <span class="glass-pill text-[10px] font-mono text-emerald-400">Resposta Rápida</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-5">Preencha seus dados abaixo e escolha se prefere enviar diretamente por <strong class="text-emerald-400">WhatsApp</strong> ou <strong class="text-rose-400">E-mail</strong>.</p>
 
               <form id="contact-form" class="flex flex-col gap-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div class="flex flex-col gap-1.5">
-                    <label for="form-name" class="font-mono text-xs text-slate-400">Seu Nome / Recrutador</label>
+                    <label for="form-name" class="font-mono text-xs text-slate-400">Seu Nome / Recrutador *</label>
                     <input 
                       type="text" 
                       id="form-name" 
@@ -872,34 +875,85 @@
                     <input 
                       type="email" 
                       id="form-email" 
-                      required 
                       placeholder="carlos@empresa.com" 
                       class="w-full bg-slate-900/80 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-rose-500 transition-colors"
                     />
                   </div>
                 </div>
 
-                <div class="flex flex-col gap-1.5">
-                  <label for="form-message" class="font-mono text-xs text-slate-400">Mensagem / Informações sobre a Oportunidade</label>
+                <div class="flex flex-col gap-2">
+                  <div class="flex flex-wrap items-center justify-between gap-1">
+                    <label for="form-message" class="font-mono text-xs text-slate-400">Mensagem / Informações sobre a Oportunidade *</label>
+                    <span class="text-[10px] font-mono text-slate-500">Personalize com 1 clique:</span>
+                  </div>
+
+                  <!-- Quick Topic Badges -->
+                  <div class="flex flex-wrap gap-2 mb-1">
+                    <button type="button" class="template-chip glass-pill text-[11px] font-mono py-1 px-3 hover:border-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer" data-template="estagio">
+                      💼 Estágio em IA / Software
+                    </button>
+                    <button type="button" class="template-chip glass-pill text-[11px] font-mono py-1 px-3 hover:border-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer" data-template="freelance">
+                      🌐 Projeto Web / Freelance
+                    </button>
+                    <button type="button" class="template-chip glass-pill text-[11px] font-mono py-1 px-3 hover:border-rose-400 hover:text-rose-300 transition-colors cursor-pointer" data-template="entrevista">
+                      💬 Entrevista & Networking
+                    </button>
+                  </div>
+
                   <textarea 
                     id="form-message" 
                     rows="4" 
                     required 
                     placeholder="Olá Arthur, vimos suas qualificações e projetos no portfólio e gostaríamos de te convidar para conversar sobre uma vaga de estágio..."
-                    class="w-full bg-slate-900/80 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-rose-500 transition-colors resize-none"
+                    class="w-full bg-slate-900/80 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-rose-500 transition-colors resize-none leading-relaxed"
                   ></textarea>
+                </div>
+
+                <!-- Live Message Preview Box -->
+                <div id="message-preview-container" class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-[11px] font-mono text-slate-400 flex items-start gap-2.5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400 flex-shrink-0 mt-0.5"></i>
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-300 font-semibold uppercase tracking-wider text-[10px]">Prévia da Mensagem Personalizada:</span>
+                      <span id="preview-mode-tag" class="text-[10px] text-emerald-400 font-mono">Pronta para envio</span>
+                    </div>
+                    <p id="message-preview-text" class="text-slate-400 mt-1 italic leading-relaxed">
+                      "Olá Arthur! Meu nome é [Seu Nome]. Vi seu portfólio e gostaria de conversar sobre uma oportunidade..."
+                    </p>
+                  </div>
                 </div>
 
                 <!-- Feedback Area -->
                 <div id="form-feedback" class="hidden"></div>
 
-                <button 
-                  type="submit" 
-                  class="btn-action w-full py-4 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-heading font-semibold text-sm uppercase tracking-wider shadow-lg shadow-rose-900/30 transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
-                >
-                  <span>Enviar Mensagem</span>
-                  <i data-lucide="send" class="w-4 h-4"></i>
-                </button>
+                <!-- Send Options Buttons -->
+                <div class="pt-2">
+                  <span class="font-mono text-[11px] text-slate-400 block mb-2">Selecione por onde deseja enviar:</span>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    
+                    <!-- WhatsApp Button -->
+                    <button 
+                      type="button" 
+                      id="btn-send-whatsapp"
+                      class="btn-whatsapp py-3.5 px-4 rounded-xl font-heading font-semibold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2.5 cursor-pointer transition-all transform hover:-translate-y-0.5"
+                    >
+                      <i data-lucide="message-circle" class="w-4 h-4"></i>
+                      <span>Enviar via WhatsApp</span>
+                    </button>
+
+                    <!-- E-mail Button -->
+                    <button 
+                      type="button" 
+                      id="btn-send-email"
+                      class="btn-action py-3.5 px-4 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-heading font-semibold text-xs uppercase tracking-wider shadow-lg shadow-rose-900/30 flex items-center justify-center gap-2.5 cursor-pointer transition-all transform hover:-translate-y-0.5"
+                    >
+                      <i data-lucide="mail" class="w-4 h-4"></i>
+                      <span>Enviar via E-mail</span>
+                    </button>
+
+                  </div>
+                </div>
+
               </form>
             </div>
           </div>

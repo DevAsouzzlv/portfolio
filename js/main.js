@@ -382,43 +382,143 @@ function initSmoothScroll() {
 }
 
 /* ==========================================================================
-   8. CONTACT FORM WITH REAL ACTIONS
+   8. CONTACT FORM WITH PERSONALIZED WHATSAPP & EMAIL DISPATCH
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contact-form');
+  const nameInput = document.getElementById('form-name');
+  const emailInput = document.getElementById('form-email');
+  const messageInput = document.getElementById('form-message');
+  const previewText = document.getElementById('message-preview-text');
   const feedback = document.getElementById('form-feedback');
+  const btnWhatsapp = document.getElementById('btn-send-whatsapp');
+  const btnEmail = document.getElementById('btn-send-email');
+  const templateChips = document.querySelectorAll('.template-chip');
 
+  // Templates pré-definidos para personalização rápida
+  const templates = {
+    estagio: "Olá Arthur! Acompanhamos seus projetos práticos (como o DevRadar) e sua formação no SENAC. Temos interesse em conversar sobre uma oportunidade de Estágio em Desenvolvimento de Software / Inteligência Artificial. Qual seria o melhor dia e horário para batermos um papo?",
+    freelance: "Olá Arthur! Conhecemos suas entregas no Devas Web e seu portfólio. Gostaríamos de solicitar um orçamento e conversar sobre o desenvolvimento de uma aplicação web para nossa demanda.",
+    entrevista: "Olá Arthur! Seu perfil técnico e suas competências chamaram nossa atenção. Gostaríamos de agendar uma entrevista para nos aprofundarmos nas suas experiências e projetos."
+  };
+
+  // Atualização em tempo real da prévia personalizada
+  function updatePreview() {
+    if (!previewText) return;
+    const name = nameInput?.value.trim() || '[Seu Nome]';
+    const email = emailInput?.value.trim() ? ` (${emailInput.value.trim()})` : '';
+    const message = messageInput?.value.trim() || 'Gostaria de conversar sobre uma oportunidade de tecnologia...';
+
+    previewText.textContent = `"Olá Arthur! Meu nome é ${name}${email}. ${message}"`;
+  }
+
+  if (nameInput) nameInput.addEventListener('input', updatePreview);
+  if (emailInput) emailInput.addEventListener('input', updatePreview);
+  if (messageInput) messageInput.addEventListener('input', updatePreview);
+
+  // Manipulação de chips de templates com microinteração
+  templateChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const type = chip.getAttribute('data-template');
+      if (type && templates[type] && messageInput) {
+        messageInput.value = templates[type];
+        templateChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        updatePreview();
+        playSynthSound('click');
+        messageInput.focus();
+      }
+    });
+  });
+
+  // Validação simples e amigável
+  function validateInputs() {
+    const name = nameInput?.value.trim();
+    const message = messageInput?.value.trim();
+
+    if (!name) {
+      showFeedback('Por favor, informe seu nome ou o da sua empresa para personalizarmos a mensagem.', 'error');
+      nameInput?.focus();
+      return null;
+    }
+    if (!message) {
+      showFeedback('Por favor, escreva uma mensagem ou selecione um dos modelos acima.', 'error');
+      messageInput?.focus();
+      return null;
+    }
+
+    const email = emailInput?.value.trim() || '';
+    return { name, email, message };
+  }
+
+  function showFeedback(text, type = 'success') {
+    if (!feedback) return;
+    feedback.classList.remove('hidden');
+
+    const isSuccess = type === 'success';
+    const borderCol = isSuccess ? 'border-emerald-500/40' : 'border-rose-500/40';
+    const bgCol = isSuccess ? 'bg-emerald-500/10' : 'bg-rose-500/10';
+    const textCol = isSuccess ? 'text-emerald-300' : 'text-rose-300';
+    const icon = isSuccess 
+      ? '<svg class="w-5 h-5 flex-shrink-0 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>'
+      : '<svg class="w-5 h-5 flex-shrink-0 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>';
+
+    feedback.innerHTML = `
+      <div class="p-3.5 rounded-xl border ${borderCol} ${bgCol} ${textCol} text-xs flex items-center gap-3">
+        ${icon}
+        <div class="font-mono">${text}</div>
+      </div>
+    `;
+
+    if (isSuccess) {
+      playSynthSound('switch');
+    }
+  }
+
+  // Disparo via WhatsApp
+  if (btnWhatsapp) {
+    btnWhatsapp.addEventListener('click', () => {
+      const data = validateInputs();
+      if (!data) return;
+
+      const emailPart = data.email ? ` (${data.email})` : '';
+      const whatsappText = `*Olá Arthur!* Meu nome é *${data.name}*${emailPart}.\n\nVi seu portfólio profissional e gostaria de falar com você:\n"${data.message}"\n\n_Enviado pelo seu portfólio oficial._`;
+      
+      const whatsappUrl = `https://wa.me/5575981450488?text=${encodeURIComponent(whatsappText)}`;
+
+      showFeedback(`Redirecionando para o WhatsApp com a mensagem personalizada para o Arthur...`, 'success');
+      
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+      }, 700);
+    });
+  }
+
+  // Disparo via E-mail
+  if (btnEmail) {
+    btnEmail.addEventListener('click', () => {
+      const data = validateInputs();
+      if (!data) return;
+
+      const subject = `Oportunidade / Contato de ${data.name}`;
+      const emailBody = `Olá Arthur,\n\nMeu nome é ${data.name}${data.email ? ' (' + data.email + ')' : ''}.\n\nGostaria de falar sobre a seguinte oportunidade:\n\n${data.message}\n\nAguardo seu retorno!\nAtenciosamente,\n${data.name}`;
+      
+      const mailtoUrl = `mailto:ssouzarthur90@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+
+      showFeedback(`Abrindo seu aplicativo de e-mail com o texto formatado para ssouzarthur90@gmail.com...`, 'success');
+
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 700);
+    });
+  }
+
+  // Se o formulário receber 'submit' (ex: Enter)
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      const name = document.getElementById('form-name')?.value || 'Recrutador';
-      const email = document.getElementById('form-email')?.value || '';
-      const message = document.getElementById('form-message')?.value || '';
-
-      if (feedback) {
-        feedback.classList.remove('hidden');
-        feedback.innerHTML = `
-          <div class="p-4 rounded-xl border border-green-500/30 bg-green-500/10 text-green-400 text-sm flex items-center gap-3">
-            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <div>
-              <strong>Mensagem recebida com sucesso, ${name}!</strong>
-              <p class="text-xs text-green-300/80 mt-1">Vou responder no seu e-mail o mais rápido possível.</p>
-            </div>
-          </div>
-        `;
-      }
-
-      playSynthSound('switch');
-      form.reset();
-
-      // Open mailto link automatically after 800ms
-      setTimeout(() => {
-        const mailto = `mailto:ssouzarthur90@gmail.com?subject=Contato de Recrutador / Oportunidade - ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nEmail de retorno: ' + email)}`;
-        window.location.href = mailto;
-      }, 1000);
+      // Aciona o WhatsApp como padrão se der Enter
+      if (btnWhatsapp) btnWhatsapp.click();
     });
   }
 }

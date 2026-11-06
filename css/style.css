@@ -384,6 +384,26 @@ body {
   100% { transform: scaleY(1.2); }
 }
 
+/* WhatsApp Custom Action Button */
+.btn-whatsapp {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.6);
+  transform: translateY(-2px);
+}
+
+.template-chip.active {
+  background: rgba(var(--accent-rgb), 0.2);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+}
+
 /* Responsive tweaks */
 @media (max-width: 768px) {
   .hero-watermark {
