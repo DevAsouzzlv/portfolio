@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141829"/>
+      <stop offset="100%" stop-color="#090b14"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff2a55"/>
+      <stop offset="100%" stop-color="#00f0ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#pbg)"/>
+
+  <!-- Browser window chrome -->
+  <rect x="0" y="0" width="800" height="42" fill="#0d101d" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <circle cx="28" cy="21" r="6" fill="#ef4444"/>
+  <circle cx="48" cy="21" r="6" fill="#f59e0b"/>
+  <circle cx="68" cy="21" r="6" fill="#10b981"/>
+
+  <rect x="120" y="10" width="400" height="22" rx="11" fill="#171c2e"/>
+  <text x="140" y="25" fill="#64748b" font-family="monospace" font-size="11">https://devasweb.netlify.app</text>
+
+  <!-- Hero graphic inside browser -->
+  <rect x="60" y="90" width="340" height="32" rx="4" fill="url(#accent)"/>
+  <rect x="60" y="140" width="280" height="14" rx="3" fill="#334155"/>
+  <rect x="60" y="165" width="220" height="14" rx="3" fill="#1e293b"/>
+  <rect x="60" y="210" width="130" height="38" rx="8" fill="#ffffff" fill-opacity="0.9"/>
+
+  <!-- Dashboard card visual elements -->
+  <rect x="440" y="90" width="300" height="340" rx="14" fill="#111628" stroke="#ffffff" stroke-opacity="0.06"/>
+  <circle cx="490" cy="140" r="24" fill="#3b82f6" fill-opacity="0.2"/>
+  <rect x="530" y="130" width="160" height="12" rx="3" fill="#cbd5e1"/>
+  <rect x="530" y="148" width="100" height="8" rx="2" fill="#64748b"/>
+
+  <line x1="470" y1="210" x2="710" y2="210" stroke="#ffffff" stroke-opacity="0.06"/>
+  
+  <!-- Mini chart simulation -->
+  <path d="M470 340 L520 290 L570 310 L620 250 L670 280 L710 230" fill="none" stroke="#ff2a55" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="710" cy="230" r="5" fill="#ff2a55"/>
+</svg>

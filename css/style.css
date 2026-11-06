@@ -1,0 +1,385 @@
+/* ==========================================================================
+   PORTFÓLIO AUTORAL — ARTHUR SOUZA (DEVASSOULV)
+   Design System: Editorial Noir x Futuristic Glassmorphism
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ==========================================================================
+     THEME 1: CRIMSON NOIR (Inspirado na Ref. 1 - Editorial / Impacto Brutal)
+     ========================================================================== */
+  --bg-base: #08080a;
+  --bg-surface: #101014;
+  --bg-card: rgba(18, 18, 24, 0.7);
+  --bg-card-hover: rgba(28, 28, 38, 0.85);
+  
+  --accent-primary: #ff2a55;
+  --accent-secondary: #e11d48;
+  --accent-rgb: 255, 42, 85;
+  --accent-glow: rgba(255, 42, 85, 0.35);
+  --accent-glow-strong: rgba(255, 42, 85, 0.65);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dark: #64748b;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(255, 42, 85, 0.35);
+  --watermark-color: rgba(255, 42, 85, 0.06);
+
+  --font-display: 'Syne', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --spotlight-color: rgba(255, 42, 85, 0.12);
+}
+
+/* ==========================================================================
+   THEME 2: CYBER GLASS (Inspirado na Ref. 2 - Neon Cyan / Purple Futurista)
+   ========================================================================== */
+[data-theme="cyber"] {
+  --bg-base: #050711;
+  --bg-surface: #0a0e20;
+  --bg-card: rgba(14, 20, 42, 0.65);
+  --bg-card-hover: rgba(20, 30, 60, 0.85);
+
+  --accent-primary: #00f0ff;
+  --accent-secondary: #9127ff;
+  --accent-rgb: 0, 240, 255;
+  --accent-glow: rgba(0, 240, 255, 0.35);
+  --accent-glow-strong: rgba(0, 240, 255, 0.65);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dark: #64748b;
+
+  --border-subtle: rgba(0, 240, 255, 0.12);
+  --border-accent: rgba(0, 240, 255, 0.4);
+  --watermark-color: rgba(0, 240, 255, 0.05);
+
+  --spotlight-color: rgba(0, 240, 255, 0.12);
+}
+
+/* Reset Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Custom */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface);
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Background Canvas & Spotlight */
+#interactive-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mouse-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, var(--spotlight-color) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: opacity 0.3s ease, background 0.4s ease;
+}
+
+/* Subtle Grid Texture */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  pointer-events: none;
+}
+
+.glass-panel:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 12px 40px -10px var(--accent-glow);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--text-main);
+  transition: all 0.25s ease;
+}
+
+.glass-pill:hover {
+  border-color: var(--accent-primary);
+  background: rgba(var(--accent-rgb), 0.1);
+  transform: translateY(-1px);
+}
+
+/* Watermark Giant Typography */
+.hero-watermark {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 16vw, 16rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--watermark-color);
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+  transition: -webkit-text-stroke 0.4s ease;
+}
+
+/* 3D Floating Objects (Inspired by Ref. 2) */
+.floating-cube {
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid var(--border-accent);
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.12), transparent);
+  backdrop-filter: blur(4px);
+  transform-style: preserve-3d;
+  animation: floatSlow 8s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) rotate(15deg) scale(1.05);
+  }
+  100% {
+    transform: translateY(10px) rotate(-10deg) scale(0.98);
+  }
+}
+
+/* 3D Tilt Card Component */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.tilt-inner {
+  transform: translateZ(24px);
+}
+
+/* Glow Badge Pulse */
+.pulse-badge {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-primary);
+  position: relative;
+}
+
+.pulse-badge::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-primary);
+  animation: ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Timeline Process (Inspired by Ref. 1) */
+.process-step {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.process-step:hover .step-badge {
+  background-color: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: scale(1.1);
+}
+
+.step-badge {
+  transition: all 0.3s ease;
+}
+
+/* Typography Helpers */
+.font-display { font-family: var(--font-display); }
+.font-heading { font-family: var(--font-heading); }
+.font-mono { font-family: var(--font-mono); }
+.font-body { font-family: var(--font-body); }
+
+/* Accent Gradient Text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #ffffff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Interactive Cursor */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: default;
+  }
+  .custom-cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.3s ease;
+  }
+  .custom-cursor-follower {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--accent-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease-out, width 0.2s ease, height 0.2s ease, border-color 0.3s ease;
+    opacity: 0.6;
+  }
+  .custom-cursor.active {
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+  }
+  .custom-cursor-follower.active {
+    width: 56px;
+    height: 56px;
+    border-color: var(--accent-primary);
+    background: rgba(var(--accent-rgb), 0.1);
+    opacity: 1;
+  }
+}
+
+/* Profile Cutout Frame (Inspired by Ref. 1 & 2) */
+.profile-hero-frame {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.1) 0%, rgba(10, 10, 15, 0.95) 100%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+.profile-hero-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 65%, var(--bg-base) 100%);
+  pointer-events: none;
+}
+
+/* Sound Button Wave Indicator */
+.sound-bar {
+  width: 3px;
+  height: 12px;
+  background-color: currentColor;
+  border-radius: 2px;
+  display: inline-block;
+  animation: soundBounce 1s infinite ease-in-out alternate;
+}
+.sound-bar:nth-child(2) { animation-delay: 0.2s; height: 16px; }
+.sound-bar:nth-child(3) { animation-delay: 0.4s; height: 10px; }
+
+@keyframes soundBounce {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1.2); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .hero-watermark {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+  }
+  .mouse-spotlight {
+    display: none;
+  }
+}

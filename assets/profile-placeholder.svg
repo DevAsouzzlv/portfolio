@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14141e"/>
+      <stop offset="50%" stop-color="#0c0c14"/>
+      <stop offset="100%" stop-color="#08080c"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2a55" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#9127ff" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="750" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="750"/>
+    <line x1="200" y1="0" x2="200" y2="750"/>
+    <line x1="300" y1="0" x2="300" y2="750"/>
+    <line x1="400" y1="0" x2="400" y2="750"/>
+    <line x1="500" y1="0" x2="500" y2="750"/>
+    <line x1="0" y1="150" x2="600" y2="150"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="0" y1="450" x2="600" y2="450"/>
+    <line x1="0" y1="600" x2="600" y2="600"/>
+  </g>
+
+  <!-- Ambient Glow Behind Silhouette -->
+  <circle cx="300" cy="360" r="220" fill="url(#glow)" filter="blur(40px)"/>
+
+  <!-- Stylized Developer Silhouette / Portrait Frame -->
+  <g transform="translate(150, 160)">
+    <!-- Head -->
+    <path d="M150 40 C110 40 85 70 85 125 C85 180 115 210 150 210 C185 210 215 180 215 125 C215 70 190 40 150 40 Z" fill="#1e2030"/>
+    
+    <!-- Hair Modern Cut -->
+    <path d="M85 110 C80 60 120 20 160 20 C200 20 225 50 220 90 C205 70 170 65 140 75 C110 85 95 100 85 110 Z" fill="#10121d"/>
+
+    <!-- Shoulders & Torso -->
+    <path d="M40 380 C40 260 100 240 150 240 C200 240 260 260 260 380 Z" fill="#141724"/>
+    
+    <!-- Blazer / Jacket collar lines -->
+    <path d="M110 245 L150 330 L190 245" stroke="#ffffff" stroke-opacity="0.15" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Decorative Overlay Card -->
+  <rect x="60" y="580" width="480" height="110" rx="16" fill="#0e111d" fill-opacity="0.85" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  
+  <text x="90" y="625" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="700" letter-spacing="1">
+    ARTHUR SOUZA
+  </text>
+  <text x="90" y="655" fill="#ff2a55" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600" letter-spacing="2">
+    DEVAS WEB • CRIADOR & DEV
+  </text>
+  
+  <circle cx="490" cy="635" r="8" fill="#10b981"/>
+  <circle cx="490" cy="635" r="14" fill="#10b981" fill-opacity="0.25"/>
+</svg>
