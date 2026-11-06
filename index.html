@@ -212,12 +212,12 @@
           <div class="relative w-full max-w-sm md:max-w-md profile-hero-frame tilt-card p-3">
             <div class="tilt-inner relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 flex flex-col justify-end">
               
-              <!-- Profile Placeholder (Substitua por foto real facilmente!) -->
+              <!-- Foto Oficial de Arthur Souza (Editorial Portrait) -->
               <img 
-                src="assets/profile-placeholder.svg" 
-                alt="Retrato de Arthur Souza" 
+                src="assets/arthur-profile.jpg" 
+                alt="Retrato Oficial de Arthur Souza" 
                 id="hero-profile-img"
-                class="absolute inset-0 w-full h-full object-cover object-top filter grayscale contrast-125 transition-all duration-500 hover:grayscale-0 hover:scale-105"
+                class="absolute inset-0 w-full h-full object-cover object-[center_20%] filter contrast-105 brightness-105 transition-all duration-700 hover:scale-105"
               />
 
               <!-- Glass HUD Floating Badge 1 (Topo Direito) -->
@@ -445,6 +445,28 @@
           <p class="text-slate-300 text-sm leading-relaxed">
             Acredito na combinação equilibrada de sólidos fundamentos técnicos acadêmicos com prática contínua no ecossistema real da web.
           </p>
+
+          <!-- About Me & Photo Box (Ref. 2 Style) -->
+          <div class="glass-panel p-5 rounded-2xl flex items-center gap-4 border-slate-800">
+            <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden flex-shrink-0 border border-rose-500/40 shadow-xl group">
+              <img 
+                src="assets/arthur-casual.jpg" 
+                alt="Arthur Souza no dia a dia dev" 
+                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-mono text-xs text-rose-400 uppercase font-semibold mb-1">Quem é Arthur Souza?</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Estudante no SENAC e fundador da Devas Web. Focado em engenharia de software com visual memorável e código performático.
+              </p>
+              <div class="flex items-center gap-2 mt-2 font-mono text-[10px] text-slate-400">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Disponível para Estágio & Projetos</span>
+              </div>
+            </div>
+          </div>
 
           <!-- Education Card -->
           <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-rose-500 flex flex-col gap-2">
