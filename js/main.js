@@ -387,7 +387,11 @@ function initSmoothScroll() {
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const nameInput = document.getElementById('form-name');
+  const companyInput = document.getElementById('form-company');
   const emailInput = document.getElementById('form-email');
+  const phoneInput = document.getElementById('form-phone');
+  const subjectSelect = document.getElementById('form-subject');
+  const modalitySelect = document.getElementById('form-modality');
   const messageInput = document.getElementById('form-message');
   const previewText = document.getElementById('message-preview-text');
   const feedback = document.getElementById('form-feedback');
@@ -406,15 +410,21 @@ function initContactForm() {
   function updatePreview() {
     if (!previewText) return;
     const name = nameInput?.value.trim() || '[Seu Nome]';
-    const email = emailInput?.value.trim() ? ` (${emailInput.value.trim()})` : '';
+    const company = companyInput?.value.trim() ? ` da empresa ${companyInput.value.trim()}` : '';
+    const subject = subjectSelect?.value || 'Estágio em Engenharia em IA & Software';
+    const modality = modalitySelect?.value || 'Remoto';
     const message = messageInput?.value.trim() || 'Gostaria de conversar sobre uma oportunidade de tecnologia...';
 
-    previewText.textContent = `"Olá Arthur! Meu nome é ${name}${email}. ${message}"`;
+    previewText.textContent = `"Olá Arthur! Meu nome é ${name}${company}.\nAssunto: ${subject} (${modality})\n"${message}"\nRetorno: ${emailInput?.value.trim() || '[Seu E-mail]'}"`;
   }
 
-  if (nameInput) nameInput.addEventListener('input', updatePreview);
-  if (emailInput) emailInput.addEventListener('input', updatePreview);
-  if (messageInput) messageInput.addEventListener('input', updatePreview);
+  // Event Listeners para atualização imediata
+  [nameInput, companyInput, emailInput, phoneInput, messageInput].forEach(input => {
+    if (input) input.addEventListener('input', updatePreview);
+  });
+  [subjectSelect, modalitySelect].forEach(select => {
+    if (select) select.addEventListener('change', updatePreview);
+  });
 
   // Manipulação de chips de templates com microinteração
   templateChips.forEach(chip => {
@@ -424,6 +434,14 @@ function initContactForm() {
         messageInput.value = templates[type];
         templateChips.forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
+        
+        // Sincroniza assunto com o chip selecionado
+        if (subjectSelect) {
+          if (type === 'estagio') subjectSelect.value = 'Estágio em Engenharia em IA & Software';
+          if (type === 'freelance') subjectSelect.value = 'Projeto Freelance / Desenvolvimento Web';
+          if (type === 'entrevista') subjectSelect.value = 'Entrevista Técnica & Networking';
+        }
+
         updatePreview();
         playSynthSound('click');
         messageInput.focus();
@@ -434,6 +452,7 @@ function initContactForm() {
   // Validação simples e amigável
   function validateInputs() {
     const name = nameInput?.value.trim();
+    const email = emailInput?.value.trim();
     const message = messageInput?.value.trim();
 
     if (!name) {
@@ -441,14 +460,23 @@ function initContactForm() {
       nameInput?.focus();
       return null;
     }
+    if (!email) {
+      showFeedback('Por favor, informe seu e-mail de contato para podermos retornar.', 'error');
+      emailInput?.focus();
+      return null;
+    }
     if (!message) {
-      showFeedback('Por favor, escreva uma mensagem ou selecione um dos modelos acima.', 'error');
+      showFeedback('Por favor, escreva uma mensagem ou selecione um dos modelos rápidos acima.', 'error');
       messageInput?.focus();
       return null;
     }
 
-    const email = emailInput?.value.trim() || '';
-    return { name, email, message };
+    const company = companyInput?.value.trim() || '';
+    const phone = phoneInput?.value.trim() || '';
+    const subject = subjectSelect?.value || 'Estágio em Engenharia em IA & Software';
+    const modality = modalitySelect?.value || 'Remoto';
+
+    return { name, company, email, phone, subject, modality, message };
   }
 
   function showFeedback(text, type = 'success') {
@@ -481,12 +509,24 @@ function initContactForm() {
       const data = validateInputs();
       if (!data) return;
 
-      const emailPart = data.email ? ` (${data.email})` : '';
-      const whatsappText = `*Olá Arthur!* Meu nome é *${data.name}*${emailPart}.\n\nVi seu portfólio profissional e gostaria de falar com você:\n"${data.message}"\n\n_Enviado pelo seu portfólio oficial._`;
+      const companyText = data.company ? ` da *${data.company}*` : '';
+      const phoneText = data.phone ? `\n📱 *WhatsApp:* ${data.phone}` : '';
+      
+      const whatsappText = 
+`*Olá Arthur!* 
+Meu nome é *${data.name}*${companyText}.
+
+📌 *Assunto:* ${data.subject} (${data.modality})
+📧 *E-mail:* ${data.email}${phoneText}
+
+💬 *Mensagem:*
+"${data.message}"
+
+_Enviado pelo seu portfólio oficial._`;
       
       const whatsappUrl = `https://wa.me/5575981450488?text=${encodeURIComponent(whatsappText)}`;
 
-      showFeedback(`Redirecionando para o WhatsApp com a mensagem personalizada para o Arthur...`, 'success');
+      showFeedback(`Redirecionando para o WhatsApp com todos os detalhes personalizados para o Arthur...`, 'success');
       
       setTimeout(() => {
         window.open(whatsappUrl, '_blank');
@@ -500,12 +540,31 @@ function initContactForm() {
       const data = validateInputs();
       if (!data) return;
 
-      const subject = `Oportunidade / Contato de ${data.name}`;
-      const emailBody = `Olá Arthur,\n\nMeu nome é ${data.name}${data.email ? ' (' + data.email + ')' : ''}.\n\nGostaria de falar sobre a seguinte oportunidade:\n\n${data.message}\n\nAguardo seu retorno!\nAtenciosamente,\n${data.name}`;
+      const companyPart = data.company ? ` (${data.company})` : '';
+      const subject = `[Oportunidade - ${data.subject}] Contato de ${data.name}${companyPart}`;
+      
+      const emailBody = 
+`Olá Arthur,
+
+Meu nome é ${data.name}${data.company ? ' da empresa ' + data.company : ''}.
+
+Entramos em contato através do seu portfólio profissional para falar sobre a seguinte oportunidade:
+
+- Tipo de Oportunidade: ${data.subject}
+- Modalidade: ${data.modality}
+- E-mail para retorno: ${data.email}
+- Telefone/WhatsApp: ${data.phone || 'Não informado'}
+
+Detalhes da Mensagem:
+${data.message}
+
+Aguardo seu retorno para conversarmos!
+Atenciosamente,
+${data.name}${data.company ? '\n' + data.company : ''}`;
       
       const mailtoUrl = `mailto:ssouzarthur90@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
-      showFeedback(`Abrindo seu aplicativo de e-mail com o texto formatado para ssouzarthur90@gmail.com...`, 'success');
+      showFeedback(`Abrindo seu aplicativo de e-mail com todas as informações formatadas para ssouzarthur90@gmail.com...`, 'success');
 
       setTimeout(() => {
         window.location.href = mailtoUrl;
