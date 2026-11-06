@@ -416,7 +416,7 @@ function initContactForm() {
 
       // Open mailto link automatically after 800ms
       setTimeout(() => {
-        const mailto = `mailto:contato.arthur@exemplo.com?subject=Contato via Portfólio de ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nEmail de retorno: ' + email)}`;
+        const mailto = `mailto:ssouzarthur90@gmail.com?subject=Contato de Recrutador / Oportunidade - ${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nEmail de retorno: ' + email)}`;
         window.location.href = mailto;
       }, 1000);
     });
