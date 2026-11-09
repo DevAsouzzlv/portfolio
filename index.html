@@ -52,94 +52,137 @@
   <div class="floating-cube w-16 h-16 rounded-xl bottom-[15%] left-[5%] opacity-25" style="animation-delay: -5s;"></div>
 
   <!-- ==========================================================================
-       HEADER & NAVIGATION
+       HEADER & NAVIGATION (Sleek Modern Navigation Bar)
        ========================================================================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-10 py-4 transition-all duration-300">
-    <div class="max-w-7xl mx-auto flex items-center justify-between glass-panel px-6 py-3 rounded-full">
-      
-      <!-- Brand com Foto do Arthur -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="relative w-10 h-10 rounded-xl overflow-hidden border border-rose-500/50 shadow-md group-hover:scale-105 group-hover:border-rose-400 transition-all flex-shrink-0 bg-slate-900">
-          <img 
-            src="assets/arthur-casual.jpg" 
-            alt="Arthur Souza" 
-            class="w-full h-full object-cover object-center filter contrast-105"
-          />
-        </div>
-        <div class="flex flex-col">
-          <span class="font-heading font-bold text-sm tracking-wider text-slate-100 uppercase group-hover:text-rose-400 transition-colors">
-            Arthur Souza
-          </span>
-          <span class="font-mono text-[10px] text-slate-400 tracking-widest uppercase">
-            Téc. Desenvolvimento de Sistemas
-          </span>
-        </div>
-      </a>
-
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#sobre" class="hover:text-white transition-colors relative py-1 hover:border-b-2 border-rose-500">Sobre Mim</a>
-        <a href="#experiencia" class="hover:text-white transition-colors relative py-1 hover:border-b-2 border-rose-500">Experiência</a>
-        <a href="#competencias" class="hover:text-white transition-colors relative py-1 hover:border-b-2 border-rose-500">Competências</a>
-        <a href="#projetos" class="hover:text-white transition-colors relative py-1 hover:border-b-2 border-rose-500">Projetos</a>
-        <a href="#contato" class="hover:text-white transition-colors relative py-1 hover:border-b-2 border-rose-500">Contato</a>
-      </nav>
-
-      <!-- Interactive Controls -->
-      <div class="flex items-center gap-3">
-        <!-- Audio Synthesizer Toggle -->
-        <button id="sound-toggle" class="glass-pill text-xs font-mono hidden sm:inline-flex items-center gap-2" title="Alternar Efeitos Sonoros">
-          <span class="flex items-end gap-[2px] h-3">
-            <span class="sound-bar"></span>
-            <span class="sound-bar"></span>
-            <span class="sound-bar"></span>
-          </span>
-          <span id="sound-status">Audio ON</span>
-        </button>
-
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="glass-pill text-xs font-mono flex items-center gap-2 hover:border-rose-400 cursor-pointer" title="Alternar Tema Estético">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400"></i>
-          <span id="theme-label">Crimson Noir</span>
-        </button>
-
-        <!-- LinkedIn CTA -->
-        <a href="https://www.linkedin.com/in/arthursouzza" target="_blank" rel="noopener noreferrer" class="btn-action hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white text-xs font-heading font-semibold uppercase tracking-wider shadow-lg hover:shadow-rose-600/30 transition-all transform hover:-translate-y-0.5">
-          <svg class="w-3.5 h-3.5 flex-shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          <span>LinkedIn</span>
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="nav-container flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-2xl">
+        
+        <!-- Brand / Logo Oficial -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="relative w-9 h-9 rounded-xl overflow-hidden bg-gradient-to-br from-purple-600 via-pink-600 to-rose-500 p-0.5 flex items-center justify-center shadow-lg shadow-purple-950/40 group-hover:scale-105 transition-all flex-shrink-0">
+            <div class="w-full h-full bg-slate-950/90 rounded-[10px] flex items-center justify-center p-1.5">
+              <img 
+                src="assets/favicon.png" 
+                alt="Arthur Souza Logo" 
+                class="w-full h-full object-contain filter drop-shadow brightness-110"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-heading font-black text-xs sm:text-sm tracking-wider text-white uppercase group-hover:text-rose-400 transition-colors">
+              Arthur Souza
+            </span>
+            <span class="font-mono text-[9px] sm:text-[10px] text-cyan-300/80 tracking-widest uppercase">
+              Téc. Desenvolvimento de Sistemas
+            </span>
+          </div>
         </a>
 
-        <!-- Mobile Menu Trigger -->
-        <button id="mobile-menu-btn" class="md:hidden glass-pill p-2 text-slate-300">
-          <i data-lucide="menu" class="w-5 h-5"></i>
-        </button>
-      </div>
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex items-center gap-7 text-xs font-heading font-semibold tracking-wider uppercase text-slate-300">
+          <a href="#sobre" class="hover:text-rose-400 transition-colors py-1">Sobre</a>
+          <a href="#experiencia" class="hover:text-rose-400 transition-colors py-1">Experiência</a>
+          <a href="#competencias" class="hover:text-rose-400 transition-colors py-1">Competências</a>
+          <a href="#projetos" class="hover:text-rose-400 transition-colors py-1">Projetos</a>
+          <a href="#contato" class="hover:text-rose-400 transition-colors py-1">Contato</a>
+        </nav>
 
+        <!-- Right Interactive Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Audio Synthesizer Toggle -->
+          <button id="sound-toggle" class="glass-pill text-xs font-mono hidden sm:inline-flex items-center gap-2 py-2 px-3" title="Alternar Efeitos Sonoros">
+            <span class="flex items-end gap-[2px] h-3">
+              <span class="sound-bar"></span>
+              <span class="sound-bar"></span>
+              <span class="sound-bar"></span>
+            </span>
+            <span id="sound-status" class="text-[11px]">Audio ON</span>
+          </button>
+
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="glass-pill text-xs font-mono flex items-center justify-center p-2.5 sm:py-2 sm:px-3 hover:border-rose-400 cursor-pointer" title="Alternar Tema Estético">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400"></i>
+            <span id="theme-label" class="hidden sm:inline text-[11px]">Crimson Noir</span>
+          </button>
+
+          <!-- LinkedIn CTA -->
+          <a href="https://www.linkedin.com/in/arthursouzza" target="_blank" rel="noopener noreferrer" class="btn-action hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white text-xs font-heading font-semibold uppercase tracking-wider shadow-md hover:shadow-rose-600/30 transition-all transform hover:-translate-y-0.5">
+            <svg class="w-3.5 h-3.5 flex-shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+
+          <!-- Mobile Menu Trigger -->
+          <button id="mobile-menu-btn" class="md:hidden glass-pill p-2.5 text-slate-200 hover:text-white hover:border-rose-400 transition-colors" aria-label="Abrir Menu">
+            <i data-lucide="menu" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
     </div>
   </header>
 
   <!-- Mobile Drawer Menu -->
-  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl hidden flex flex-col justify-center px-8">
-    <button id="mobile-menu-close" class="absolute top-6 right-6 p-3 glass-pill text-slate-300">
-      <i data-lucide="x" class="w-6 h-6"></i>
-    </button>
-    <div class="flex flex-col gap-6 text-2xl font-heading font-bold text-slate-200">
-      <a href="#sobre" class="hover:text-rose-500 transition-colors">01. Sobre Mim</a>
-      <a href="#experiencia" class="hover:text-rose-500 transition-colors">02. Experiência Profissional</a>
-      <a href="#competencias" class="hover:text-rose-500 transition-colors">03. Tecnologias & Competências</a>
-      <a href="#projetos" class="hover:text-rose-500 transition-colors">04. Projetos & Portfólio</a>
-      <a href="#contato" class="hover:text-rose-500 transition-colors">05. Contato Direto</a>
+  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden flex flex-col justify-between p-6 sm:p-10">
+    <div class="flex items-center justify-between pb-5 border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg overflow-hidden bg-gradient-to-br from-purple-600 via-pink-600 to-rose-500 p-0.5 flex items-center justify-center">
+          <div class="w-full h-full bg-slate-950/90 rounded-[6px] flex items-center justify-center p-1">
+            <img src="assets/favicon.png" alt="Arthur Souza Logo" class="w-full h-full object-contain" />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-black text-xs text-white uppercase tracking-wider">Arthur Souza</span>
+          <span class="font-mono text-[9px] text-cyan-300/80 uppercase">Téc. Desenvolvimento de Sistemas</span>
+        </div>
+      </div>
+      <button id="mobile-menu-close" class="p-2.5 glass-pill text-slate-300 hover:text-white hover:border-rose-400" aria-label="Fechar Menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
     </div>
-    <div class="mt-12 pt-8 border-t border-slate-800 flex flex-col gap-4">
-      <span class="text-xs font-mono text-slate-500 tracking-wider">OBJETIVO:</span>
-      <div class="flex items-center gap-2 text-sm text-emerald-400 font-mono">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-        Estágio em Engenharia em IA / Software
+
+    <nav class="flex flex-col gap-4 text-xl font-heading font-bold text-slate-200 my-auto">
+      <a href="#sobre" class="hover:text-rose-400 transition-colors flex items-center justify-between py-2.5 border-b border-white/5">
+        <span>01. Sobre Mim</span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500"></i>
+      </a>
+      <a href="#experiencia" class="hover:text-rose-400 transition-colors flex items-center justify-between py-2.5 border-b border-white/5">
+        <span>02. Experiência</span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500"></i>
+      </a>
+      <a href="#competencias" class="hover:text-rose-400 transition-colors flex items-center justify-between py-2.5 border-b border-white/5">
+        <span>03. Competências</span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500"></i>
+      </a>
+      <a href="#projetos" class="hover:text-rose-400 transition-colors flex items-center justify-between py-2.5 border-b border-white/5">
+        <span>04. Projetos & Portfólio</span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500"></i>
+      </a>
+      <a href="#contato" class="hover:text-rose-400 transition-colors flex items-center justify-between py-2.5 border-b border-white/5">
+        <span>05. Contato Direto</span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500"></i>
+      </a>
+    </nav>
+
+    <div class="pt-5 border-t border-slate-800 flex flex-col gap-3">
+      <div class="flex items-center gap-2 text-xs text-emerald-400 font-mono">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        Disponível para Estágio em IA & Software
+      </div>
+      <div class="flex items-center gap-3 pt-1">
+        <a href="https://www.linkedin.com/in/arthursouzza" target="_blank" class="glass-pill text-xs py-2 px-3 text-indigo-300 flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 flex-shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/DevAsouzzlv" target="_blank" class="glass-pill text-xs py-2 px-3 text-slate-300 flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 flex-shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>GitHub</span>
+        </a>
       </div>
     </div>
   </div>
 
-  <main class="relative z-10 pt-28 md:pt-36">
+  <main class="relative z-10 pt-24 sm:pt-28 md:pt-32">
 
     <!-- ==========================================================================
          HERO SECTION (Apresentação Profissional Direta)
@@ -273,16 +316,16 @@
     <!-- ==========================================================================
          SEÇÃO 01: SÍNTESE DE QUALIFICAÇÕES & FORMAÇÃO
          ========================================================================== -->
-    <section id="sobre" class="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+    <section id="sobre" class="py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-20 max-w-7xl mx-auto reveal">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
         <!-- Left: Síntese Oficial do Currículo -->
         <div class="lg:col-span-7 flex flex-col gap-6">
           <span class="font-mono text-xs uppercase tracking-widest text-rose-500 font-semibold">
             // 01. SÍNTESE DE QUALIFICAÇÕES
           </span>
-          <h2 class="font-display font-black text-3xl md:text-5xl text-white tracking-tight uppercase">
+          <h2 class="font-display font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight uppercase break-words max-w-full">
             Sobre <span class="text-gradient">Mim</span>
           </h2>
           
@@ -361,14 +404,14 @@
     <!-- ==========================================================================
          SEÇÃO 02: EXPERIÊNCIAS PROFISSIONAIS
          ========================================================================== -->
-    <section id="experiencia" class="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+    <section id="experiencia" class="py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-20 max-w-7xl mx-auto reveal">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-slate-800">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-6 border-b border-slate-800">
         <div>
           <span class="font-mono text-xs uppercase tracking-widest text-rose-500 font-semibold block mb-2">
             // 02. HISTÓRICO PRÁTICO
           </span>
-          <h2 class="font-display font-black text-3xl md:text-5xl text-white tracking-tight uppercase">
+          <h2 class="font-display font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight uppercase break-words max-w-full">
             Experiências <span class="text-gradient">Profissionais</span>
           </h2>
         </div>
@@ -440,13 +483,13 @@
     <!-- ==========================================================================
          SEÇÃO 03: TECNOLOGIAS DOMINADAS & PRINCIPAIS COMPETÊNCIAS
          ========================================================================== -->
-    <section id="competencias" class="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+    <section id="competencias" class="py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-20 max-w-7xl mx-auto reveal">
       
-      <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <span class="font-mono text-xs uppercase tracking-widest text-rose-500 font-semibold block mb-2">
           // 03. STACK & HABILIDADES
         </span>
-        <h2 class="font-display font-black text-3xl md:text-5xl text-white tracking-tight uppercase">
+        <h2 class="font-display font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight uppercase break-words max-w-full">
           Tecnologias & <span class="text-gradient">Competências</span>
         </h2>
         <p class="text-slate-400 text-sm mt-3">
@@ -461,42 +504,42 @@
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
           
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="wind" class="w-7 h-7 text-cyan-400 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">Tailwind CSS</span>
           </div>
 
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="code" class="w-7 h-7 text-yellow-400 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">JavaScript</span>
           </div>
 
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="file-code" class="w-7 h-7 text-blue-400 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">TypeScript</span>
           </div>
 
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="atom" class="w-7 h-7 text-cyan-400 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">React.js</span>
           </div>
 
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="layers" class="w-7 h-7 text-slate-200 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">Next.js</span>
           </div>
 
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="server" class="w-7 h-7 text-emerald-400 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">Node.js</span>
           </div>
 
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="terminal" class="w-7 h-7 text-blue-300 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">Python</span>
           </div>
 
-          <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
+          <div class="glass-panel tech-card p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-rose-500 transition-all group">
             <i data-lucide="git-branch" class="w-7 h-7 text-orange-400 group-hover:scale-110 transition-transform"></i>
             <span class="font-heading font-bold text-xs text-white">Git & GitHub</span>
           </div>
@@ -565,14 +608,14 @@
     <!-- ==========================================================================
          SEÇÃO 04: PROJETOS & PORTFÓLIO
          ========================================================================== -->
-    <section id="projetos" class="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+    <section id="projetos" class="py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-20 max-w-7xl mx-auto reveal">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-slate-800">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-6 border-b border-slate-800">
         <div>
           <span class="font-mono text-xs uppercase tracking-widest text-rose-500 font-semibold block mb-2">
             // 04. PROJETOS EM DESTAQUE
           </span>
-          <h2 class="font-display font-black text-3xl md:text-5xl text-white tracking-tight uppercase">
+          <h2 class="font-display font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight uppercase break-words max-w-full">
             Aplicações & <span class="text-gradient">Projetos</span>
           </h2>
         </div>
@@ -585,7 +628,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         
         <!-- DevRadar (Grande Destaque do Currículo) -->
-        <article class="lg:col-span-8 glass-panel rounded-3xl overflow-hidden tilt-card flex flex-col justify-between border-slate-800 hover:border-rose-500/50 transition-all p-6 sm:p-8 relative">
+        <article class="lg:col-span-8 glass-panel rounded-3xl overflow-hidden tilt-card glow-pulse flex flex-col justify-between border-slate-800 hover:border-rose-500/50 transition-all p-6 sm:p-8 relative">
           <div class="flex flex-col gap-4">
             <div class="flex items-center justify-between">
               <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-rose-600 text-white shadow-lg">
@@ -679,16 +722,16 @@
     <!-- ==========================================================================
          SEÇÃO 05: FOTO PROFISSIONAL RECORTADA & APRESENTAÇÃO
          ========================================================================== -->
-    <section class="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto relative overflow-hidden">
+    <section class="py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-20 max-w-7xl mx-auto relative overflow-hidden reveal">
       
       <!-- Watermark Background -->
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hero-watermark opacity-40 select-none pointer-events-none">
         ENGENHARIA
       </div>
 
-      <div class="glass-panel p-8 md:p-14 rounded-3xl relative z-10 border-slate-800 bg-gradient-to-br from-slate-950/90 via-[#0e111d]/90 to-black/95">
+      <div class="glass-panel p-6 sm:p-8 md:p-14 rounded-3xl relative z-10 border-slate-800 bg-gradient-to-br from-slate-950/90 via-[#0e111d]/90 to-black/95">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           <!-- Left: Foto de Estúdio Recortada com Glow -->
           <div class="lg:col-span-5 relative flex flex-col items-center justify-center">
@@ -733,8 +776,8 @@
               </span>
             </div>
 
-            <h2 class="font-display font-black text-3xl md:text-5xl text-white tracking-tight uppercase leading-tight">
-              Dedicação, Lógica & <br/>
+            <h2 class="font-display font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight uppercase leading-tight break-words max-w-full">
+              Dedicação, Lógica & <br class="hidden sm:inline"/>
               <span class="text-gradient">Vontade de Aprender.</span>
             </h2>
 
@@ -793,9 +836,9 @@
     <!-- ==========================================================================
          SEÇÃO 06: CONTATO & CANAIS PARA RECRUTADORES
          ========================================================================== -->
-    <section id="contato" class="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+    <section id="contato" class="py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-20 max-w-7xl mx-auto reveal">
       
-      <div class="glass-panel p-8 md:p-14 rounded-3xl relative overflow-hidden border-slate-800">
+      <div class="glass-panel p-6 sm:p-8 md:p-14 rounded-3xl relative overflow-hidden border-slate-800">
         
         <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-rose-600/10 rounded-full blur-3xl pointer-events-none"></div>
 

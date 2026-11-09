@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initContactForm();
   initMobileMenu();
+  initScrollHeader();
+  initScrollReveal();
 });
 
 /* ==========================================================================
@@ -602,4 +604,45 @@ function initMobileMenu() {
       playSynthSound('click');
     });
   }
+}
+
+/* ==========================================================================
+   10. SCROLL REVEAL ANIMATIONS (IntersectionObserver)
+   ========================================================================== */
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  reveals.forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   11. SCROLL HEADER COMPACT STATE
+   ========================================================================== */
+function initScrollHeader() {
+  const header = document.getElementById('main-header');
+  if (!header) return;
+
+  function onScroll() {
+    if (window.scrollY > 25) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
