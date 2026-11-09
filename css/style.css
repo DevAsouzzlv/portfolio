@@ -526,12 +526,55 @@ header.scrolled .nav-container {
   transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Responsive tweaks */
+/* Touch responsiveness & Fast Tap */
+html, body, button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Responsive & Mobile Performance Tweaks */
 @media (max-width: 768px) {
-  .hero-watermark {
-    font-size: clamp(3rem, 15vw, 5rem);
+  /* Disable heavy canvas & 3D floaters on mobile to guarantee smooth 60-120fps */
+  #interactive-canvas,
+  .floating-cube,
+  .mouse-spotlight,
+  .custom-cursor,
+  .custom-cursor-follower {
+    display: none !important;
   }
-  .mouse-spotlight {
-    display: none;
+
+  /* Lightweight glassmorphism on mobile GPUs */
+  .nav-container {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Simplify scroll-reveal on mobile (no expensive blur filter on scroll) */
+  .reveal {
+    filter: none !important;
+    transform: translateY(14px) !important;
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out !important;
+    will-change: opacity, transform !important;
+  }
+
+  .reveal.revealed {
+    filter: none !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Prevent automatic iOS zoom on focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Sane watermark scaling */
+  .hero-watermark {
+    font-size: clamp(2.5rem, 12vw, 4rem) !important;
+    opacity: 0.15 !important;
   }
 }

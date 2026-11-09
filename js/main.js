@@ -62,6 +62,13 @@ function initTheme() {
 function initCanvasBackground() {
   const canvas = document.getElementById('interactive-canvas');
   if (!canvas) return;
+
+  // Em mobile (< 768px), desativa completamente o loop do canvas para poupar 100% de CPU/GPU e bateria
+  if (window.innerWidth < 768) {
+    canvas.style.display = 'none';
+    return;
+  }
+
   const ctx = canvas.getContext('2d');
 
   let width = (canvas.width = window.innerWidth);
