@@ -58,22 +58,17 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <div class="nav-container flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-2xl">
         
-        <!-- Brand / Logo Oficial -->
-        <a href="#" class="flex items-center gap-3 group">
-          <div class="relative w-9 h-9 rounded-xl overflow-hidden bg-gradient-to-br from-purple-600 via-pink-600 to-rose-500 p-0.5 flex items-center justify-center shadow-lg shadow-purple-950/40 group-hover:scale-105 transition-all flex-shrink-0">
-            <div class="w-full h-full bg-slate-950/90 rounded-[10px] flex items-center justify-center p-1.5">
-              <img 
-                src="assets/favicon.png" 
-                alt="Arthur Souza Logo" 
-                class="w-full h-full object-contain filter drop-shadow brightness-110"
-              />
-            </div>
+        <!-- Brand Badge Oficial -->
+        <a href="#" class="brand-badge-pill flex items-center gap-2.5 px-3 py-1.5 group">
+          <!-- Icon Gradient com a Letra 'A' -->
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-violet-600 via-fuchsia-500 to-pink-500 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+            <span class="font-display font-black text-white text-sm sm:text-base leading-none select-none">A</span>
           </div>
-          <div class="flex flex-col">
-            <span class="font-heading font-black text-xs sm:text-sm tracking-wider text-white uppercase group-hover:text-rose-400 transition-colors">
+          <div class="flex flex-col leading-tight">
+            <span class="font-heading font-black text-xs sm:text-sm tracking-wide text-white uppercase group-hover:text-rose-300 transition-colors">
               Arthur Souza
             </span>
-            <span class="font-mono text-[9px] sm:text-[10px] text-cyan-300/80 tracking-widest uppercase">
+            <span class="font-mono text-[8px] sm:text-[9px] text-cyan-300 tracking-wider uppercase font-medium">
               Téc. Desenvolvimento de Sistemas
             </span>
           </div>
@@ -125,15 +120,13 @@
   <!-- Mobile Drawer Menu -->
   <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden flex flex-col justify-between p-6 sm:p-10">
     <div class="flex items-center justify-between pb-5 border-b border-slate-800">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg overflow-hidden bg-gradient-to-br from-purple-600 via-pink-600 to-rose-500 p-0.5 flex items-center justify-center">
-          <div class="w-full h-full bg-slate-950/90 rounded-[6px] flex items-center justify-center p-1">
-            <img src="assets/favicon.png" alt="Arthur Souza Logo" class="w-full h-full object-contain" />
-          </div>
+      <div class="brand-badge-pill flex items-center gap-2.5 px-3 py-1.5">
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 via-fuchsia-500 to-pink-500 flex items-center justify-center flex-shrink-0 shadow-sm">
+          <span class="font-display font-black text-white text-sm leading-none select-none">A</span>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col leading-tight">
           <span class="font-heading font-black text-xs text-white uppercase tracking-wider">Arthur Souza</span>
-          <span class="font-mono text-[9px] text-cyan-300/80 uppercase">Téc. Desenvolvimento de Sistemas</span>
+          <span class="font-mono text-[8px] text-cyan-300 uppercase font-medium">Téc. Desenvolvimento de Sistemas</span>
         </div>
       </div>
       <button id="mobile-menu-close" class="p-2.5 glass-pill text-slate-300 hover:text-white hover:border-rose-400" aria-label="Fechar Menu">
