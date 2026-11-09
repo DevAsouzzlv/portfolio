@@ -421,21 +421,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Brand Badge Pill */
-.brand-badge-pill {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: rgba(8, 8, 14, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 12px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.brand-badge-pill:hover {
-  border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 16px rgba(236, 72, 153, 0.35);
-}
-
 header.scrolled .nav-container {
   background: rgba(8, 8, 12, 0.94);
   border-color: rgba(var(--accent-rgb), 0.35);
